@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_feminino"
+            android:icon="@drawable/icfeminino"
+            android:title="Feminino" />
+
+        <item
+            android:id="@+id/nav_masculino"
+            android:icon="@drawable/icmasculino"
+            android:title="Masculino" />
+
+        <item
+            android:id="@+id/nav_casa"
+            android:icon="@drawable/ichome"
+            android:title="Casa" />
+
+        <item
+            android:id="@+id/nav_pets"
+            android:icon="@drawable/icpets"
+            android:title="Pets" />
+
+        <item
+            android:id="@+id/nav_maquiagem"
+            android:icon="@drawable/icmaquiagem"
+            android:title="Beleza" />
+
+        <item
+            android:id="@+id/nav_acessorios"
+            android:icon="@drawable/icacessorios"
+            android:title="Acessórios" />
+
+    </group>
+
+</menu>
