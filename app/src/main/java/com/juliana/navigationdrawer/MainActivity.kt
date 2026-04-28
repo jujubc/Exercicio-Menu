@@ -17,6 +17,7 @@ import com.google.android.material.navigation.NavigationView
 import com.juliana.navigationdrawer.databinding.ActivityMainBinding
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
+import androidx.drawerlayout.widget.DrawerLayout
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -64,15 +65,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Toast.makeText(this, "Categorias", Toast.LENGTH_SHORT).show()
         }
 
-        onBackPressedDispatcher.addCallback(this) {
-            if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                // Se o menu estiver aberto, apenas fecha o menu
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            } else {
-                // Se o menu estiver fechado, fecha a Activity (o app)
-                finish()
-            }
+        val callback = onBackPressedDispatcher.addCallback(this, false) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
         }
+
+        binding.drawerLayout.addDrawerListener(object : DrawerLayout.SimpleDrawerListener() {
+            override fun onDrawerOpened(drawerView: android.view.View) {
+                callback.isEnabled = true
+            }
+
+            override fun onDrawerClosed(drawerView: android.view.View) {
+                callback.isEnabled = false
+            }
+        })
 
     }
 
@@ -96,3 +101,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fragmentTransaction.commit()
     }
 }
+
